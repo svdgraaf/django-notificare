@@ -19,36 +19,41 @@ https://notifica.re/dashboard/services/create/webhook
 
 Save your tokens in your django settings.py file:
 
-    NOTIFICARE_SERVICE_TOKEN = '123'
-    NOTIFICARE_USER_TOKEN = 'xyz'
+```python
+NOTIFICARE_SERVICE_TOKEN = '123'
+NOTIFICARE_USER_TOKEN = 'xyz'
+```
 
 Usage
 =====
 Import Django-notificare into your project, and you should be good to go:
 
-    import django_notificare as notificare
-    response = notificare.call('+3162345678', 'short message', 'long message')
-    print response.json
-    {u'message': u'aye aye captain!'}
+```python
+import django_notificare as notificare
+response = notificare.call('+3162345678', 'short message', 'long message')
+print response.json
+{u'message': u'aye aye captain!'}
+```
 
 Django-notificare implements the several different actions:
 
-    import django_notificare as notificare
-    long_msg = 'longtext is long'
-    short_msg = 'short msg'  # truncates after 42 chars
+```python
+import django_notificare as notificare
+long_msg = 'longtext is long'
+short_msg = 'short msg'  # truncates after 42 chars
 
-    notificare.email('foo@example.com', short_msg, long_msg)
+notificare.email('foo@example.com', short_msg, long_msg)
 
-    notificare.browse('http://example.com/', short_msg, long_text)
-    notificare.call('+3162345678', short_msg, long_text)
-    notificare.reply(post_to='http://example.com/', short_msg, long_text)
+notificare.browse('http://example.com/', short_msg, long_text)
+notificare.call('+3162345678', short_msg, long_text)
+notificare.reply(post_to='http://example.com/', short_msg, long_text)
 
-    # Ofcourse there is also the send() and callback() command,
-    # where you have total control over the targets and options
-    #
-    # def send(message, full_message=None, targets=[])
-    # def callback(url, message=None, full_message=None, keyboard=True)
-
+# Ofcourse there is also the send() and callback() command,
+# where you have total control over the targets and options
+#
+# def send(message, full_message=None, targets=[])
+# def callback(url, message=None, full_message=None, keyboard=True)
+```
 
 Dependencies
 ============
