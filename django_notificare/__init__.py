@@ -16,37 +16,19 @@ def send(message, full_message=None, targets=[]):
     return r
 
 
-def call(number=None, message=None, full_message=None, keyboard=False):
-    target = {
-        'action': 'call',
-        'url': 'tel://' + str(number),
-        'type': 'url',
-        'message': keyboard,
-    }
-    return send(message, full_message, [target])
-
-
-def email(address, message=None, full_message=None, keyboard=False):
-    target = {
-        'action': 'reply by email',
-        'url': 'mailto:{address}'.format(address),
-        'type': 'url',
-        'message': keyboard,
-    }
-    return send(message, full_message, [target])
-
-
-def url(url, message=None, full_message=None):
+# action for opening a url (with schema)
+def url(url, message=None, full_message=None, keyboard=False):
     target = {
         'action': 'open web page',
-        'url': 'safari://{url}'.format(url),
+        'url': url,
         'type': 'url',
-        'message': False,
+        'message': keyboard,
     }
     return send(message, full_message, [target])
 
 
-def reply(url, message=None, full_message=None, keyboard=True):
+# callback url, defaults keyboard enabled
+def callback(url, message=None, full_message=None, keyboard=True):
     target = {
         'action': 'reply by message',
         'url': url,
@@ -56,11 +38,21 @@ def reply(url, message=None, full_message=None, keyboard=True):
     return send(message, full_message, [target])
 
 
-def callback(url, message=None, full_message=None):
-    target = {
-        'action': 'open web page',
-        'url': 'safari://{url}'.format(url),
-        'type': 'url',
-        'message': False,
-    }
-    return send(message, full_message, [target])
+# call the given number
+def call(number=None, message=None, full_message=None, keyboard=False):
+    return url('mailto:{number}'.format(number=number), message, full_message, keyboard)
+
+
+# send an action to start a mail to the given address
+def email(address, message=None, full_message=None, keyboard=False):
+    return url('mailto:{address}'.format(address=address), message, full_message, keyboard)
+
+
+# open given url in safari
+def browse(url, message=None, full_message=None):
+    return url('safari://{url}'.format(url=url), message, full_message, False)
+
+
+# reply to something, and send the details to the given url (enables keyboard)
+def reply(post_to, message=None, full_message=None, keyboard=True):
+    return callback(post_to, message, full_message, keyboard)
