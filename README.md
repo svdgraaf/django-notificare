@@ -1,12 +1,14 @@
 django-notificare
+
 =================
 This is a python frontend to the awesome [Notifica.re](https://notifica.re) service.
 
 Installation
 ============
 Django-notificare is easy installable through pip:
-    
-    pip install git@github.com:svdgraaf/django-notificare.git
+```bash
+pip install https://github.com/svdgraaf/django-notificare.git
+```
 
 Configuration
 =============
