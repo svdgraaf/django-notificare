@@ -60,6 +60,22 @@ notificare.url('chrome://example.com/', short_msg, long_text)
 # def callback(url, message=None, full_message=None, keyboard=True)
 ```
 
+Creating action after comments
+==============================
+Let's say you have an application, using the [Django comments system](https://docs.djangoproject.com/en/dev/ref/contrib/comments/). After a comments is posted, we want to send a notification: 
+
+```python
+from django.db.models.signals import post_save, pre_save
+from django.contrib.comments.models import Comment
+import django_notificare as notificare
+
+def send_notification(sender, instance, **kwargs)
+    if kwargs['created'] == True:
+        notificare.reply(post_to='http://example.com/', 'Comment posted!', instance.comment)
+
+post_save.connect(send_notification, sender=Comment)
+```
+
 Dependencies
 ============
 Django-notificare only depends on Requests. It doesn't actually need Django to run, just be sure to set the settings correctly in settings.py
