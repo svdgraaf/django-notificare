@@ -42,11 +42,21 @@ import django_notificare as notificare
 long_msg = 'longtext is long'
 short_msg = 'short msg'  # truncates after 42 chars
 
+# send email to given mail address
 notificare.email('foo@example.com', short_msg, long_msg)
 
-notificare.browse('http://example.com/', short_msg, long_text)
+# call the given number
 notificare.call('+3162345678', short_msg, long_text)
+
+# write a reply, and post it the given url
 notificare.reply(post_to='http://example.com/', short_msg, long_text)
+
+# open given address in safari
+notificare.browse('http://example.com/', short_msg, long_text)
+
+# open the given url, including the schema
+notificare.url('chrome://example.com/', short_msg, long_text)
+
 
 # Ofcourse there is also the send() and callback() command,
 # where you have total control over the targets and options
