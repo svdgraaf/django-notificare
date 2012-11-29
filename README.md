@@ -1,21 +1,16 @@
 django-notificare
 =================
-
-This is a python frontend to the awesome Notifica.re service.
+This is a python frontend to the awesome [Notifica.re](https://notifica.re) service.
 
 Installation
 ============
-
 Django-notificare is easy installable through pip:
     
     pip install git@github.com:svdgraaf/django-notificare.git
 
 Configuration
 =============
-
-Django-notificare uses the internal Webhooks from Notifica.re, before you start, create a new webhook, and give it a fancy name:
-
-https://notifica.re/dashboard/services/create/webhook
+Django-notificare uses the internal Webhooks from Notifica.re, before you start, create a new [webhook](https://notifica.re/dashboard/services/create/webhook), and give it a fancy name.
 
 Save your tokens in your django settings.py file:
 
@@ -59,7 +54,7 @@ notificare.url('chrome://example.com/', short_msg, long_text)
 
 
 # Ofcourse there is also the send() and callback() command,
-# where you have total control over the targets and options
+# where you have total control over the targets and options:
 #
 # def send(message, full_message=None, targets=[])
 # def callback(url, message=None, full_message=None, keyboard=True)
@@ -67,4 +62,6 @@ notificare.url('chrome://example.com/', short_msg, long_text)
 
 Dependencies
 ============
-django-notificare only depends on Requests. It doesn't actually need django to run, just be sure to set the settings correctly in the 
+Django-notificare only depends on Requests. It doesn't actually need Django to run, just be sure to set the settings correctly in settings.py
+
+Be good to kittens.
