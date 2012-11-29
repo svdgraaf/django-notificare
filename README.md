@@ -7,7 +7,7 @@ Installation
 ============
 Django-notificare is easy installable through pip:
 ```bash
-pip install https://github.com/svdgraaf/django-notificare.git
+pip install https://github.com/svdgraaf/django-notificare/archive/master.zip
 ```
 
 Configuration
