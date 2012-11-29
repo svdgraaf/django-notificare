@@ -34,13 +34,20 @@ Import Django-notificare into your project, and you should be good to go:
 Django-notificare implements the several different actions:
 
     import django_notificare as notificare
-    notificare.email('foo@example.com', 'foobar', 'foobarred')
-    notificare.url('http://svdgraaf.nl/', 'foobar', 'foobarred')
-    notificare.call('+3162345678', 'short message', 'long message')
-    notificare.reply('http://example.com/', 'foobar', 'foobarrrrrred', keyboard=True)  # keyboard optional
-    # Ofcourse there is also the custom send() command, where you have total
-    # control over the targets
-    notificare.send('foobar', full_message='foobarrrred', targets=[]):
+    long_msg = 'longtext is long'
+    short_msg = 'short msg'  # truncates after 42 chars
+
+    notificare.email('foo@example.com', short_msg, long_msg)
+
+    notificare.browse('http://example.com/', short_msg, long_text)
+    notificare.call('+3162345678', short_msg, long_text)
+    notificare.reply(post_to='http://example.com/', short_msg, long_text)
+
+    # Ofcourse there is also the send() and callback() command,
+    # where you have total control over the targets and options
+    #
+    # def send(message, full_message=None, targets=[])
+    # def callback(url, message=None, full_message=None, keyboard=True)
 
 
 Dependencies
