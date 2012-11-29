@@ -79,6 +79,6 @@ post_save.connect(send_notification, sender=Comment)
 
 Dependencies
 ============
-Django-notificare only depends on Requests. It doesn't actually need Django to run, just be sure to set the settings correctly in settings.py
+Django-notificare only depends on [Requests](http://docs.python-requests.org/en/latest/). It doesn't actually need Django to run, just be sure to set the settings correctly in settings.py
 
 Be good to kittens.
