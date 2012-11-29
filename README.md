@@ -71,7 +71,8 @@ import django_notificare as notificare
 
 def send_notification(sender, instance, **kwargs)
     if kwargs['created'] == True:
-        notificare.reply(post_to='http://example.com/', 'Comment posted!', instance.comment)
+        url = 'http://example.com'  # set your real backend post url here
+        notificare.reply(post_to=url, 'Comment posted!', instance.comment)
 
 post_save.connect(send_notification, sender=Comment)
 ```
