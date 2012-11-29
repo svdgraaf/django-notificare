@@ -16,22 +16,22 @@ def send(message, full_message=None, targets=[]):
     return r
 
 
-def call(number=None, message=None, full_message=None):
+def call(number=None, message=None, full_message=None, keyboard=False):
     target = {
         'action': 'call',
         'url': 'tel://' + str(number),
         'type': 'url',
-        'message': False,
+        'message': keyboard,
     }
     return send(message, full_message, [target])
 
 
-def email(address, message=None, full_message=None):
+def email(address, message=None, full_message=None, keyboard=False):
     target = {
         'action': 'reply by email',
         'url': 'mailto:{address}'.format(address),
         'type': 'url',
-        'message': False,
+        'message': keyboard,
     }
     return send(message, full_message, [target])
 
@@ -46,7 +46,17 @@ def url(url, message=None, full_message=None):
     return send(message, full_message, [target])
 
 
-def url(url, message=None, full_message=None):
+def reply(url, message=None, full_message=None, keyboard=True):
+    target = {
+        'action': 'reply by message',
+        'url': url,
+        'type': 'callback',
+        'message': keyboard,
+    }
+    return send(message, full_message, [target])
+
+
+def callback(url, message=None, full_message=None):
     target = {
         'action': 'open web page',
         'url': 'safari://{url}'.format(url),
